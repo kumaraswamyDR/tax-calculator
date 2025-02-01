@@ -94,22 +94,23 @@ export default function TaxCalculator() {
       </Typography>
 
       <div className="flex flex-col gap-4">
-        <Input
-          label="Gross Annual Income (Rs)"
+        <p>Enter gross Income</p>
+        <input
+          // label="Gross Annual Income (Rs)"
           type="number"
           value={income}
           onChange={(e) => setIncome(e.target.value)}
-          className="text-lg px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" crossOrigin={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}        />
+          className="text-lg px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"         />
         
         <motion.div whileHover={{ scale: 1.05 }}>
           <Button
-            className="w-full py-3 text-lg font-semibold bg-blue-700 text-white hover:bg-blue-800 transition duration-300 rounded-lg"
+            className="w-full py-3 text-black text-lg font-semibold bg-blue-700  hover:bg-blue-800 transition duration-300 rounded-lg"
             onClick={handleCalculate} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
             Calculate Tax
           </Button>
         </motion.div>
       </div>
-
+      <p className="text-red-600">Note : We have Deducted the standard deduction of 75000</p>
       {tax !== null && (
         <motion.p
           initial={{ opacity: 0 }}
@@ -139,7 +140,7 @@ export default function TaxCalculator() {
        className="mt-6 text-2xl font-semibold text-center text-green-700"
      >
        Saving: Rs {oldTax - tax}
-       <p>We have Deducted the standard deduction of 75000</p>
+       
      </motion.p>}
 
       <Card className="mt-8"  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
