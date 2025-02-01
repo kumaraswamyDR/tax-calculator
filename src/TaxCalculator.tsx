@@ -128,7 +128,7 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           </Button>
         </motion.div>
       </div>
-      <p className="text-red-600">Note : We have Deducted the standard deduction of 75000</p>
+      <p className="text-red-600">{`Note : We have Deducted the standard deduction ofnew ${Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }).format(75000)}`}</p>
       {tax !== null && (
         <motion.p
           initial={{ opacity: 0 }}
@@ -136,7 +136,9 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           transition={{ duration: 0.3 }}
           className="mt-6 text-2xl font-semibold text-center text-green-700"
         >
-          Estimated New Tax: Rs {tax.toFixed(2)}
+          <p>Estimated Tax: {new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }).format(tax)}</p>
+
+          {/* Estimated New Tax: Rs {formatNumber(tax.toFixed(2))} */}
         </motion.p>
       )}
       {oldTax !== null && (
@@ -146,8 +148,8 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           transition={{ duration: 0.3 }}
           className="mt-6 text-2xl font-semibold text-center text-green-700"
         >
-          Estimated Old Tax: Rs {oldTax.toFixed(2)}
-        </motion.p>
+          <p>Estimated Tax: {new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }).format(oldTax)}</p>
+          </motion.p>
       )}
 
       {tax !== null && oldTax !== null && 
@@ -157,7 +159,7 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
        transition={{ duration: 0.3 }}
        className="mt-6 text-2xl font-semibold text-center text-green-700"
      >
-       Savings: Rs {oldTax - tax}
+          <p>Tax Relief: {new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }).format(oldTax-tax)}</p>
        
      </motion.p>}
 
