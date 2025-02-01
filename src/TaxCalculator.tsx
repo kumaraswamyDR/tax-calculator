@@ -36,8 +36,7 @@ const calculateNewTax = (grossIncome: number): number => {
 
 const calculateOldTax = (grossIncome: number): number => {
   const income  =  grossIncome - standardDeduction
-  if (income <= 1200000) return 0;
-  if (income <= 400000) return 0;
+  if (income <= 700000) return 0;
   
   let tax = 0;
   const slabs = [
