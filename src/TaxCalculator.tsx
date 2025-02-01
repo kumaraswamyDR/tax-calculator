@@ -2,7 +2,11 @@ import { useState } from "react";
 import { Input, Button, Card, CardBody, Typography } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 
-const calculateNewTax = (income: number): number => {
+const standardDeduction = 75000
+
+const calculateNewTax = (grossIncome: number): number => {
+
+  const income  =  grossIncome - standardDeduction
   if (income <= 1200000) return 0;
   
   let tax = 0;
@@ -30,7 +34,9 @@ const calculateNewTax = (income: number): number => {
   return tax;
 };
 
-const calculateOldTax = (income: number): number => {
+const calculateOldTax = (grossIncome: number): number => {
+  const income  =  grossIncome - standardDeduction
+  if (income <= 1200000) return 0;
   if (income <= 400000) return 0;
   
   let tax = 0;
@@ -84,12 +90,12 @@ export default function TaxCalculator() {
       </Typography>
 
       <Typography variant="paragraph" className="text-center text-gray-700 mb-6"  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-        Enter your annual income to calculate the estimated tax based on the current tax slabs.
+        Enter your Gross annual income to calculate the estimated tax based on the current tax slabs.
       </Typography>
 
       <div className="flex flex-col gap-4">
         <Input
-          label="Annual Income (Rs)"
+          label="Gross Annual Income (Rs)"
           type="number"
           value={income}
           onChange={(e) => setIncome(e.target.value)}
@@ -133,6 +139,7 @@ export default function TaxCalculator() {
        className="mt-6 text-2xl font-semibold text-center text-green-700"
      >
        Saving: Rs {oldTax - tax}
+       <p>We have Deducted the standard deduction of 750000</p>
      </motion.p>}
 
       <Card className="mt-8"  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
