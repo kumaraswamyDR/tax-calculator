@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Button, Card, CardBody, Typography } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 
-const standardDeduction = 75000
+const standardDeduction = 75000;
 
 const calculateNewTax = (grossIncome: number): number => {
 
   const income  =  grossIncome - standardDeduction
+  console.log('income',grossIncome)
   if (income <= 1200000) return 0;
   
   let tax = 0;
@@ -35,7 +36,7 @@ const calculateNewTax = (grossIncome: number): number => {
 };
 
 const calculateOldTax = (grossIncome: number): number => {
-  const income  =  grossIncome - standardDeduction
+  const income  =  Number(grossIncome) - standardDeduction
   if (income <= 700000) return 0;
   
   let tax = 0;
@@ -62,13 +63,16 @@ const calculateOldTax = (grossIncome: number): number => {
   return tax;
 };
 
+
+
 export default function TaxCalculator() {
   const [income, setIncome] = useState<string>("");
   const [tax, setTax] = useState<number | null>(null);
   const [oldTax, setOldTax] = useState<number | null>(null);
 
   const handleCalculate = () => {
-    const annualIncome = parseFloat(income);
+    const annualIncome = Number(income.replace(/,/g, ""));
+    
     if (!isNaN(annualIncome) && annualIncome >= 0) {
       setTax(calculateNewTax(annualIncome));
       setOldTax(calculateOldTax(annualIncome));
@@ -76,6 +80,21 @@ export default function TaxCalculator() {
       setTax(null);
     }
   };
+
+ // Format number as per Indian format (1,50,000)
+ const formatNumber = (value: string) => {
+  const num = value.replace(/\D/g, ""); // Remove non-numeric characters
+  if (!num) return ""; // Avoid empty input errors
+  return new Intl.NumberFormat("en-IN").format(parseInt(num, 10)); // Indian format
+};
+
+// Handle input change and format on-the-fly
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const rawValue = e.target.value.replace(/,/g, ""); // Remove existing commas
+  if (/^\d*$/.test(rawValue)) { // Ensure only numbers
+    setIncome(formatNumber(rawValue));
+  }
+}
 
   return (
     <motion.div
@@ -96,9 +115,9 @@ export default function TaxCalculator() {
         <p>Enter gross Income</p>
         <input
           // label="Gross Annual Income (Rs)"
-          type="number"
+          // type="number"
           value={income}
-          onChange={(e) => setIncome(e.target.value)}
+          onChange={ handleInputChange}
           className="text-lg px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"         />
         
         <motion.div whileHover={{ scale: 1.05 }}>
