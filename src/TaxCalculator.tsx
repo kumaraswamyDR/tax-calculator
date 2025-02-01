@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input, Button, Card, CardBody, Typography } from "@material-tailwind/react";
+import { Button, Card, CardBody, Typography } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 
 const standardDeduction = 75000
