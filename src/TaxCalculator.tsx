@@ -3,7 +3,7 @@ import { Input, Button, Card, CardBody, Typography } from "@material-tailwind/re
 import { motion } from "framer-motion";
 
 const calculateNewTax = (income: number): number => {
-  if (income <= 400000) return 0;
+  if (income <= 1200000) return 0;
   
   let tax = 0;
   const slabs = [
