@@ -60,7 +60,7 @@ function App() {
           <div className="w-4 h-4 bg-red-500 rounded-full"></div>
         </div>
         <p className="text-lg font-semibold text-gray-700 ml-3">
-          <span className="text-red-500 text-xl font-bold">{visitorCount > 0 ? visitorCount : ''}</span> visitors are live now
+          <span className="text-red-500 text-xl font-bold">{visitorCount > 0 ? visitorCount : ''}</span> users have explored our site!
         </p>
         <span className="ml-3 text-green-500 text-xl">✔</span>
       </div>
