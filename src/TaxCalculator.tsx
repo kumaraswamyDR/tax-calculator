@@ -139,7 +139,7 @@ export default function TaxCalculator() {
        transition={{ duration: 0.3 }}
        className="mt-6 text-2xl font-semibold text-center text-green-700"
      >
-       Saving: Rs {oldTax - tax}
+       Savings: Rs {oldTax - tax}
        
      </motion.p>}
 
