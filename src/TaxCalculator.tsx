@@ -148,7 +148,7 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
           transition={{ duration: 0.3 }}
           className="mt-6 text-2xl font-semibold text-center text-green-700"
         >
-          <p>Estimated Tax: {new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }).format(oldTax)}</p>
+          <p>Estimated Old Tax: {new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }).format(oldTax)}</p>
           </motion.p>
       )}
 
