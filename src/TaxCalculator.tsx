@@ -193,6 +193,7 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             </tbody>
           </table>
         </CardBody>
+        <p className="p-4">Devloped by Kumar & Team</p>
       </Card>
     </motion.div>
   );
