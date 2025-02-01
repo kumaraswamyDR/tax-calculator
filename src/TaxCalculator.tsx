@@ -112,23 +112,23 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       </Typography>
 
       <div className="flex flex-col gap-4">
-        <p>Enter gross Income</p>
+        <p className="!text-black">Enter gross Income</p>
         <input
           // label="Gross Annual Income (Rs)"
           // type="number"
           value={income}
           onChange={ handleInputChange}
-          className="text-lg px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"         />
+          className="text-lg px-4 py-2 border !text-black border-gray-300 rounded-lg"         />
         
         <motion.div whileHover={{ scale: 1.05 }}>
           <Button
-            className="w-full py-3 text-black text-lg font-semibold bg-blue-700  hover:bg-blue-800 transition duration-300 rounded-lg"
+            className="w-full py-3 text-white text-lg mb-4 font-semibold !bg-green-600 !hover:bg-green-400 transition duration-300 rounded-lg"
             onClick={handleCalculate} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          >
             Calculate Tax
           </Button>
         </motion.div>
       </div>
-      <p className="text-red-600">{`Note : We have Deducted the standard deduction ofnew ${Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }).format(75000)}`}</p>
+      <p className="text-red-600">{`Note : We have Deducted the standard deduction of ${Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }).format(75000)}`}</p>
       {tax !== null && (
         <motion.p
           initial={{ opacity: 0 }}
