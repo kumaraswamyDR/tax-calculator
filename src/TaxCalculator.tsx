@@ -139,7 +139,7 @@ export default function TaxCalculator() {
        className="mt-6 text-2xl font-semibold text-center text-green-700"
      >
        Saving: Rs {oldTax - tax}
-       <p>We have Deducted the standard deduction of 750000</p>
+       <p>We have Deducted the standard deduction of 75000</p>
      </motion.p>}
 
       <Card className="mt-8"  placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
